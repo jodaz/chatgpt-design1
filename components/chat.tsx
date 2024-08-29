@@ -3,8 +3,6 @@
 import { ChatList } from '@/components/chat-list'
 import { ChatPanel } from '@/components/chat-panel'
 import { EmptyScreen } from '@/components/empty-screen'
-import { ListFlights } from '@/components/flights/list-flights'
-import { ListHotels } from '@/components/hotels/list-hotels'
 import { Message } from '@/lib/chat/actions'
 import { useLocalStorage } from '@/lib/hooks/use-local-storage'
 import { useScrollAnchor } from '@/lib/hooks/use-scroll-anchor'
@@ -14,6 +12,7 @@ import { useAIState, useUIState } from 'ai/rsc'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
+import { MessagesGroup } from './messages-group'
 
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -64,13 +63,18 @@ export function Chat({ id, className, session, missingKeys }: ChatProps) {
       className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]"
       ref={scrollRef}
     >
-      <div className={cn('pb-[200px] pt-4', className)} ref={messagesRef}>
-        {messages.length ? (
+      <div className={cn('flex justify-center items-center flex-col h-full', className)} ref={messagesRef}>
+        {/* {messages.length ? (
           <ChatList messages={messages} isShared={false} session={session} />
         ) : (
           <EmptyScreen />
-        )}
-        <div className="h-px w-full" ref={visibilityRef} />
+        )} */}
+        
+        <EmptyScreen />
+        {/* <div className="h-px w-full" ref={visibilityRef} /> */}
+        <div className=''>
+          <MessagesGroup />
+        </div>
       </div>
       <ChatPanel
         id={id}

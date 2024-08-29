@@ -8,7 +8,7 @@ import { useActions, useUIState } from 'ai/rsc'
 import { UserMessage } from './stocks/message'
 import { type AI } from '@/lib/chat/actions'
 import { Button } from '@/components/ui/button'
-import { IconArrowElbow, IconPlus } from '@/components/ui/icons'
+import { IconArrowElbow, IconPaperclip, IconPlus, IconTelegram } from '@/components/ui/icons'
 import {
   Tooltip,
   TooltipContent,
@@ -118,18 +118,17 @@ export function PromptForm({
           }
         }}
       />
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-zinc-100 px-12 sm:rounded-full sm:px-12">
+      <div className="relative flex max-h-11 w-full grow flex-col overflow-hidden bg-gray-100 px-12 sm:rounded-xl sm:px-12 border-2 border-solid border-black-100">
         {/* <Tooltip>
           <TooltipTrigger asChild> */}
         <Button
-          variant="outline"
           size="icon"
-          className="absolute left-4 top-[14px] size-8 rounded-full bg-background p-0 sm:left-4"
+          className="absolute left-4 top-[6px] size-8 rounded-full bg-transparent p-0 sm:left-4 shadow-none hover:bg-zinc-200 "
           onClick={() => {
             fileRef.current?.click()
           }}
         >
-          <IconPlus />
+          <IconPaperclip />
           <span className="sr-only">New Chat</span>
         </Button>
         {/* </TooltipTrigger>
@@ -140,7 +139,7 @@ export function PromptForm({
           tabIndex={0}
           onKeyDown={onKeyDown}
           placeholder="Send a message."
-          className="min-h-[60px] w-full bg-transparent placeholder:text-zinc-900 resize-none px-4 py-[1.3rem] focus-within:outline-none sm:text-sm"
+          className="rounded-xl min-h-[44px] w-full bg-transparent placeholder:text-gray-400 resize-none px-4 py-3 focus-within:outline-none sm:text-sm"
           autoFocus
           spellCheck={false}
           autoComplete="off"
@@ -150,7 +149,7 @@ export function PromptForm({
           value={input}
           onChange={e => setInput(e.target.value)}
         />
-        <div className="absolute right-4 top-[13px] sm:right-4">
+        <div className="absolute right-4 top-[4px] sm:right-4">
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
@@ -159,7 +158,7 @@ export function PromptForm({
                 disabled={input === ''}
                 className="bg-transparent shadow-none text-zinc-950 rounded-full hover:bg-zinc-200"
               >
-                <IconArrowElbow />
+                <IconTelegram />
                 <span className="sr-only">Send message</span>
               </Button>
             </TooltipTrigger>
